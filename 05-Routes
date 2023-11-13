@@ -65,7 +65,4 @@ resource "aws_route_table_association" "public-ap-south-2c" {
   route_table_id = aws_route_table.public.id
 }
 
-resource "aws_route_table_association" "public-ap-south-2d" {
-  subnet_id      = aws_subnet.public-ap-south-2d.id
-  route_table_id = aws_route_table.public.id
-}
+

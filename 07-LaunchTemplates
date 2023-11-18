@@ -38,7 +38,7 @@ resource "aws_launch_template" "app1_LT" {
     <body>
     <div>
     <h1>Dark Saber Clan</h1>
-    <h1>Chains Broken in Tokyo</h1>
+    <h1>Chains Broken in Hyderabad</h1>
     <p><b>Instance Name:</b> $(hostname -f) </p>
     <p><b>Instance Private Ip Address: </b> $local_ipv4</p>
     <p><b>Availability Zone: </b> $az</p>
@@ -58,7 +58,7 @@ resource "aws_launch_template" "app1_LT" {
     tags = {
       Name    = "app1_LT"
       Service = "application1"
-      Owner   = "Chewbacca"
+      Owner   = "Darth Vader"
       Planet  = "Mustafar"
     }
   }

@@ -38,7 +38,7 @@ resource "aws_security_group" "app1-sg01-servers" {
   tags = {
     Name    = "app1-sg01-servers"
     Service = "application1"
-    Owner   = "Luke"
+    Owner   = "Darth Vader"
     Planet  = "Musafar"
   }
 

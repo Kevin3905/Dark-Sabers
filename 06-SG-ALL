@@ -1,78 +1,79 @@
-resource "aws_security_group" "app1-sg01-servers" {
-  name        = "app1-sg01-servers"
-  description = "app1-sg01-servers"
-  vpc_id      = aws_vpc.app1.id
+resource "aws_security_group" "app1_sg01_servers" {
+    
+    name        = "app1_sg01_servers"
+    description = "app1_sg01_servers"
+    vpc_id      = aws_vpc.app1.id
 
-  ingress {
-    description = "MyHomePage"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+    ingress {
+        description      = "My_Home_Page"
+        from_port        = 80
+        to_port          = 80
+        protocol         = "tcp"
+        cidr_blocks      = ["0.0.0.0/0"]
+        //ipv6_cidr_blocks = [aws_vpc.app1.ipv6_cidr_block]
+    }
 
-  ingress {
-    description = "SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+    ingress {
+        description      = "SSH"
+        from_port        = 22
+        to_port          = 22
+        protocol         = "tcp"
+        cidr_blocks      = ["0.0.0.0/0"]
+        //ipv6_cidr_blocks = [aws_vpc.app1.ipv6_cidr_block]
+    }
 
-  ingress {
-    description = "MyEvilBox"
-    from_port   = 3389
-    to_port     = 3389
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+    ingress {
+        description      = "Evil Box"
+        from_port        = 3389
+        to_port          = 3389
+        protocol         = "tcp"
+        cidr_blocks      = ["0.0.0.0/0"]
+        //ipv6_cidr_blocks = [aws_vpc.app1.ipv6_cidr_block]
+    }
 
+    egress {
+        from_port        = 0
+        to_port          = 0
+        protocol         = "-1"
+        cidr_blocks      = ["0.0.0.0/0"]
+        ipv6_cidr_blocks = ["::/0"]
+    }
 
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name    = "app1-sg01-servers"
+    tags = {
+    Name = "app1_sg01_servers"
     Service = "application1"
-    Owner   = "Darth Vader"
-    Planet  = "Musafar"
+    Owner = "Chewbacca"
+    Planet = "Musafar"
   }
-
 }
 
+resource "aws_security_group" "app1_sg02_LB01" {
+    
+    name        = "app1_sg02_LB01"
+    description = "app1_sg02_LB01"
+    vpc_id      = aws_vpc.app1.id
 
+    ingress {
+        description      = "LB_External"
+        from_port        = 80
+        to_port          = 80
+        protocol         = "tcp"
+        cidr_blocks      = ["0.0.0.0/0"]
+        //ipv6_cidr_blocks = [aws_vpc.app1.ipv6_cidr_block]
+    }
 
+    egress {
+        from_port        = 0
+        to_port          = 0
+        protocol         = "-1"
+        cidr_blocks      = ["0.0.0.0/0"]
+        ipv6_cidr_blocks = ["::/0"]
+    }
 
-
-resource "aws_security_group" "app1-sg02-LB01" {
-  name        = "app1-sg02-LB01"
-  description = "app1-sg02-LB01"
-  vpc_id      = aws_vpc.app1.id
-
-  ingress {
-    description = "MyHomePage"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name    = "app1-sg02-LB01"
+    tags = {
+    Name = "app1_sg02_LB01"
     Service = "application1"
-    Owner   = "Darth Vader"
-    Planet  = "Musafar"
+    Owner = "Chewbacca"
+    Planet = "Musafar"
   }
-
 }

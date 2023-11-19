@@ -2,9 +2,9 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.app1.id
 
   tags = {
-    Name    = "app1_IGW"
+    Name = "private-me-central-1a"
     Service = "application1"
-    Owner   = "Darth Vader"
-    Planet  = "Musafar"
+    Owner = "Chewbacca"
+    Planet = "Musafar"
   }
 }
